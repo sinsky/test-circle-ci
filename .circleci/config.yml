@@ -2,6 +2,7 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -25,16 +26,16 @@ jobs:
           command: "node index.js"
   test-echo:
     description: "test用コマンド"
-    parameters:
-      name:
-        type: string
-        default: circleci
     docker:
       - image: cimg/base:2021.04
+    parameters:
+      my-name:
+        type: string
+        default: circleci
     resource_class: small
     steps:
       - checkout
-      - run: echo << parameters.name >>
+      - run: echo << parameters.my-name >>
       
 
 # Invoke jobs via workflows
