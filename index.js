@@ -10,3 +10,4 @@ const hashNode = val =>
   );
 
 hashNode("hello cicle").then(hash=>console.log(hash));
+hashNode("hello ci/cd").then(hash=>console.log(hash));
