@@ -6,6 +6,7 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   create-hash:
+    description: "cryptを使用してハッシュ値の生成を行う"
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -22,6 +23,19 @@ jobs:
       - run:
           name: "log hash"
           command: "node index.js"
+  test-echo:
+    description: "test用コマンド"
+    parameters:
+      name:
+        type: string
+        default: circleci
+    docker:
+      - image: cimg/base:2021.04
+    resource_class: small
+    steps:
+      - checkout
+      - run: echo << parameters.name >>
+      
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -29,3 +43,4 @@ workflows:
   create-hash-workflow:
     jobs:
       - create-hash
+      - test-echo
