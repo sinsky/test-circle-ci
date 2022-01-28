@@ -54,12 +54,12 @@ jobs:
           name: Yarn パッケージのキャッシュの保存
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - "./"
+            - "~/project/"
       - run:
           name: es-lint
           command: |
             mkdir -p /tmp/test-reports/eslint/
-            node_modules/.bin/eslint index.js --format stylish --output-file /tmp/test-reports/eslint/result
+            node_modules/.bin/eslint index.js --format tap --output-file /tmp/test-reports/eslint/result
       - store_artifacts:
           path: /tmp/test-reports
 
