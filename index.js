@@ -10,4 +10,4 @@ const hashNode = val =>
   );
 
 hashNode("Hello CircleCI!").then(hash=>console.log(hash));
-hashNode("Hello CI/CD").then(hash=>console.log(hash));
+hashNode("Hello CI/CD!").then(hash=>console.log(hash));
