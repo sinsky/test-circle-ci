@@ -43,6 +43,7 @@ jobs:
     resource_class: small
     steps:
       - checkout
+      - run: cd ~/.cache/yarn
       - restore_cache:
           name: Yarn パッケージのキャッシュの復元
           keys:
@@ -56,10 +57,14 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
+          command: |
+            cd ~/project/
+            pwd
+      - run:
           name: es-lint
           command: |
             mkdir -p /tmp/test-reports/eslint/
-            node_modules/.bin/eslint index.js --format tap --output-file /tmp/test-reports/eslint/result
+            node_modules/.bin/eslint index.js --format junit --output-file /tmp/test-reports/eslint/result.xml
       - store_artifacts:
           path: /tmp/test-reports
 
