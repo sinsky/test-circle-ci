@@ -1,0 +1,22 @@
+env:
+  browser: true
+  commonjs: true
+  es2021: true
+extends: eslint:recommended
+plugins:
+  - async-await
+parserOptions:
+  ecmaVersion: latest
+rules:
+  max-len:
+    - error
+    - ignoreComments: true
+      ignoreStrings: true
+      ignoreRegExpLiterals: true
+      code: 100
+  indent: [error, 2]
+  quotes: [warn, double, { avoidEscape: true }]
+  template-curly-spacing: [error, never]
+  no-console: 0
+  async-await/space-after-async: error
+  async-await/space-after-await: error
