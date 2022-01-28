@@ -59,7 +59,7 @@ jobs:
           name: es-lint
           command: |
             mkdir -p /tmp/test-reports/eslint/
-            node_modules/.bin/eslint index.js --format junit --output-file /tmp/test-reports/eslint/result.xml
+            node_modules/.bin/eslint index.js --format stylish --output-file /tmp/test-reports/eslint/result.txt
       - store_artifacts:
           path: /tmp/test-reports
 
