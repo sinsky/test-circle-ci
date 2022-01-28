@@ -9,10 +9,12 @@
   "scripts": {
     "lint:view": "eslint index.js",
     "lint:fix": "eslint --fix index.js",
+    "format:write": "prettier --write index.js",
     "prepare": "husky install"
   },
   "devDependencies": {
     "eslint": "^8.7.0",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "prettier": "^2.5.1"
   }
 }

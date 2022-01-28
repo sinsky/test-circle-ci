@@ -7,3 +7,5 @@ echo "\n\n## eslint fix #################"
 yarn lint:fix
 echo "\n\n## eslint view #################"
 yarn lint:view
+echo "\n\n## format prettier #################"
+yarn format:write
