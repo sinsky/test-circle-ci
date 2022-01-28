@@ -40,18 +40,6 @@ jobs:
       - run:
           name: "log hash"
           command: "node index.js"
-  test-echo:
-    description: "test用コマンド"
-    docker:
-      - image: cimg/base:2021.04
-    parameters:
-      my-name:
-        type: string
-        default: circleci
-    resource_class: small
-    steps:
-      - checkout
-      - run: echo << parameters.my-name >>
   eslint:
     description: "check code style by es-lint"
     docker:
@@ -77,8 +65,7 @@ jobs:
 workflows:
   create-hash-workflow:
     jobs:
-      - test-echo
       - eslint
       - create-hash:
-          require:
+          requires:
             - eslint
