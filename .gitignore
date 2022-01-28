@@ -1,0 +1,14 @@
+# https://github.com/kaelzhang/node-ignore
+
+# yarn
+*.lock
+
+# Numerous always-ignore extensions
+package-lock.json
+
+# OS or Editor folders
+.DS_Store
+._*
+
+# Folders to ignore
+node_modules
