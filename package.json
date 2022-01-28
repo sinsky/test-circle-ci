@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-plugin-async-await": "^0.0.0"
+  },
+  "scripts": {
+    "lint:view": "eslint index.js",
+    "lint:fix": "eslint --fix index.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0"
+  }
+}
