@@ -36,7 +36,26 @@ jobs:
     steps:
       - checkout
       - run: echo << parameters.my-name >>
-      
+  eslint:
+    description: "check code style by es-lint"
+    docker:
+      - image: circleci/node:12.22.7-stretch-browsers-legacy
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          name: Yarn パッケージのキャッシュの復元
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: 依存関係のインストール
+          command: yarn install --immutable
+      - save_cache:
+          name: Yarn パッケージのキャッシュの保存
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run: yarn eslint:fix
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
