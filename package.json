@@ -14,12 +14,7 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "index.js": [
-        "yarn eslint --fix index.js",
-        "git add"
-      ]
-    }
+    "*.{js}": "eslint --fix index.js"
   },
   "scripts": {
     "lint:view": "eslint index.js",
