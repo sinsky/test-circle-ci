@@ -12,3 +12,4 @@ const hashNode = val =>
 hashNode("Hello CircleCI!").then(hash=>console.log(hash));
 hashNode("Welcome CI/CD.").then((hash) => console.log(hash));
 hashNode('test eslint pre-commit?').then(hash => console.log(hash));
+hashNode("test eslint pre-commit?").then((hash) => console.log(hash));
