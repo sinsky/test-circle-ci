@@ -5,20 +5,17 @@
   "license": "MIT",
   "dependencies": {
     "eslint-plugin-async-await": "^0.0.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.2"
+    "husky": "^7.0.4"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn lint:fix"
     }
-  },
-  "lint-staged": {
-    "*.{js}": "eslint --fix index.js"
   },
   "scripts": {
     "lint:view": "eslint index.js",
-    "lint:fix": "eslint --fix index.js"
+    "lint:fix": "eslint --fix index.js",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "eslint": "^8.7.0"
