@@ -43,23 +43,18 @@ jobs:
     resource_class: small
     steps:
       - checkout
-      - run: cd ~/.cache/yarn
       - restore_cache:
           name: Yarn パッケージのキャッシュの復元
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: 依存関係のインストール
-          command: yarn install --immutable
+          command: yarn install
       - save_cache:
           name: Yarn パッケージのキャッシュの保存
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run:
-          command: |
-            cd ~/project/
-            pwd
       - run:
           name: es-lint
           command: |
