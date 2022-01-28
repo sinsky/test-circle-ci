@@ -2,6 +2,22 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+commands:
+  restore_yarn:
+    description: Yarn パッケージのキャッシュの復元
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+  save_yarn:
+    description: Yarn パッケージのキャッシュの保存
+    steps:
+      - checkout
+      - save_cache:
+          name: Yarn パッケージのキャッシュの保存
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -43,18 +59,11 @@ jobs:
     resource_class: small
     steps:
       - checkout
-      - restore_cache:
-          name: Yarn パッケージのキャッシュの復元
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+      - restore_yarn
       - run:
           name: 依存関係のインストール
           command: yarn install
-      - save_cache:
-          name: Yarn パッケージのキャッシュの保存
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - save_yarn
       - run:
           name: es-lint
           command: |
@@ -68,6 +77,8 @@ jobs:
 workflows:
   create-hash-workflow:
     jobs:
-      - create-hash
       - test-echo
       - eslint
+      - create-hash:
+          require:
+            - eslint
