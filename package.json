@@ -7,11 +7,6 @@
     "eslint-plugin-async-await": "^0.0.0",
     "husky": "^7.0.4"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint:fix"
-    }
-  },
   "scripts": {
     "lint:view": "eslint index.js",
     "lint:fix": "eslint --fix index.js",
