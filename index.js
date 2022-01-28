@@ -3,7 +3,7 @@ const crypto = require("crypto");
 
 const hashNode = val =>
   new Promise(resolve =>
-      setTimeout(
+    setTimeout(
       () => resolve(crypto.createHash("sha256").update(val).digest("hex")),
       0
     )
