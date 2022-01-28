@@ -4,7 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "eslint-plugin-async-await": "^0.0.0"
+    "eslint-plugin-async-await": "^0.0.0",
+    "husky": "^7.0.4"
+  },
+  "husky": {
+    "huooks":{
+      "pre-commit": "eslint --fix index.js",
+      "pre-push": ""
+    }
   },
   "scripts": {
     "lint:view": "eslint index.js",
