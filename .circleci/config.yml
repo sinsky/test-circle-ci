@@ -50,6 +50,10 @@ jobs:
       - run:
           name: 依存関係のインストール
           command: yarn install --immutable
+      - run:
+          command: |
+            pwd
+            ls -l
       - save_cache:
           name: Yarn パッケージのキャッシュの保存
           key: yarn-packages-{{ checksum "yarn.lock" }}
