@@ -64,3 +64,4 @@ workflows:
     jobs:
       - create-hash
       - test-echo
+      - eslint
