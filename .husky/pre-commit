@@ -1,6 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+echo "## eslint view #################"
 yarn lint:view
+echo "\n\n## eslint fix #################"
 yarn lint:fix
-git add
+echo "\n\n## eslint view #################"
+yarn lint:view
