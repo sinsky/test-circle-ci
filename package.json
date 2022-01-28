@@ -5,12 +5,18 @@
   "license": "MIT",
   "dependencies": {
     "eslint-plugin-async-await": "^0.0.0",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.2"
   },
   "husky": {
-    "hooks":{
-      "pre-commit": "eslint --fix index.js",
+    "hooks": {
+      "pre-commit": "lint-staged",
       "pre-push": ""
+    }
+  },
+  "lint-staged":{
+    "linters":{
+      "index.js": ["eslint --fix","git add"]
     }
   },
   "scripts": {
