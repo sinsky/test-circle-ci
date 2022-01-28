@@ -11,12 +11,15 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": ""
+      "pre-push": "lint-staged"
     }
   },
-  "lint-staged":{
-    "linters":{
-      "*.js": ["eslint --fix","git add"]
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ]
     }
   },
   "scripts": {
