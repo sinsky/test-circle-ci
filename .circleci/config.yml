@@ -55,7 +55,13 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run: yarn lint:fix
+      - run:
+          name: es-lint
+          command: |
+            mkdir -p /tmp/test-reports/eslint/
+            node_modules/.bin/eslint index.js --format junit --output-file /tmp/test-reports/eslint/result.xml
+      - store_artifacts:
+          path: /tmp/test-reports
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
