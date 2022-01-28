@@ -16,8 +16,8 @@
   },
   "lint-staged": {
     "linters": {
-      "*.js": [
-        "yarn eslint --fix",
+      "index.js": [
+        "yarn eslint --fix index.js",
         "git add"
       ]
     }
