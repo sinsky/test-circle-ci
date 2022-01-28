@@ -54,7 +54,7 @@ jobs:
           name: Yarn パッケージのキャッシュの保存
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
+            - "./"
       - run:
           name: es-lint
           command: |
